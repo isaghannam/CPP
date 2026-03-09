@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 14:50:48 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/04 16:35:27 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/03/09 16:21:01 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ int main()
     while (1)
     {
         std::cout << "Type a VALID command (ADD, SEARCH OR EXIT): ";
-        getline(std::cin, command);
+        std::getline(std::cin, command);
         if (command == "ADD")
             phonebook.add_contact();
         else if (command == "SEARCH")
             phonebook.search();
         else if (command == "EXIT")
+            break;
+        else if (std::cin.eof())
             break;
         else
             std::cout << "\"" << command << "\"" << " is not valid command.\n";
