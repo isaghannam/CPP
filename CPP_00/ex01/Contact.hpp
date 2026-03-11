@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:22:08 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/04 14:57:35 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/03/10 11:17:12 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define CONTACT_HPP
 
 #include <iostream>
+#include <string>
+#include <cstdio>
 
 class Contact
 {

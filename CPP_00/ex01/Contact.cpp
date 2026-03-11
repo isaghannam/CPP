@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:22:16 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/04 16:33:19 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/03/10 18:36:42 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void print_truncate(std::string &str);
 
 Contact::Contact(int index, std::string first_name, std::string surname, std::string nickname, std::string telephone, std::string darkest_secret)
 {
-    this->index = index;
+    this->index = index + 1;
     this->first_name = first_name;
     this->surname = surname;
     this->nickname = nickname;
