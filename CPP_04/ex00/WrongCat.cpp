@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 16:46:39 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/16 07:50:36 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/03/14 17:04:09 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat()
-    : Animal("Cat")
+WrongCat::WrongCat()
+    : WrongAnimal("WrongCat")
 {
-    cout << "Default Cat constructor called.\n";
+    cout << "Default WrongCat constructor called.\n";
 }
 
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
-    cout << "Cat destructor called.\n";
+    cout << "WrongCat destructor called.\n";
 }
 
-Cat& Cat::operator=(const Cat& other)
+WrongCat& WrongCat::operator=(const WrongCat& other)
 {
-    cout << "Cat operator '=' called.\n";
+    cout << "WrongCat operator '=' called.\n";
     if (this != &other)
     {
         this->type = other.type;
@@ -33,14 +33,14 @@ Cat& Cat::operator=(const Cat& other)
     return (*this);
 }
 
-Cat::Cat(const Cat& other)
-    : Animal("Cat")
+WrongCat::WrongCat(const WrongCat& other)
+    : WrongAnimal("WrongCat")
 {
-    cout << "Cat copy constructor called.\n";
+    cout << "WrongCat copy constructor called.\n";
     *this = other;
 }
 
-void Cat::makeSound() const
+void WrongCat::makeSound() const
 {
     cout << "MEAW MEAW MEAW\n";
 }

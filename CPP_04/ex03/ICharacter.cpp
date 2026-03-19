@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   ICharacter.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/12 16:38:53 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/16 07:50:27 by ighannam         ###   ########.fr       */
+/*   Created: 2026/03/18 11:12:50 by ighannam          #+#    #+#             */
+/*   Updated: 2026/03/19 15:41:07 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#include "ICharacter.hpp"
 
-#include "Animal.hpp"
-
-class Cat : public Animal
+ICharacter::ICharacter()
 {
-    public:
-        Cat();
-        ~Cat();
-        Cat& operator=(const Cat& other);
-        Cat(const Cat& other);
-        void makeSound() const;
-};
+    
+}
 
+ICharacter& ICharacter::operator=(const ICharacter& other)
+{
+    (void)other;
+    return (*this);
+}
 
-
-#endif
+ICharacter::ICharacter(const ICharacter& other)
+{
+    (void)other;
+}

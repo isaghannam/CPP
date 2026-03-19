@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 16:44:40 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/16 07:50:21 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/03/18 10:37:24 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ Animal::Animal(const Animal& other)
     *this = other;
 }
 
+//defaul definition of makeSound. If this method is not implemented in child class,
+//it will have this implementation
 void Animal::makeSound() const
 {
     cout << "GENERIC ANIMAL SOUND\n";

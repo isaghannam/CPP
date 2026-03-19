@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/12 16:38:53 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/16 07:50:27 by ighannam         ###   ########.fr       */
+/*   Created: 2026/03/18 11:03:26 by ighannam          #+#    #+#             */
+/*   Updated: 2026/03/19 15:25:00 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef ICE_HPP
+#define ICE_HPP
 
-#include "Animal.hpp"
+#include "AMateria.hpp"
 
-class Cat : public Animal
+class Ice : public AMateria
 {
-    public:
-        Cat();
-        ~Cat();
-        Cat& operator=(const Cat& other);
-        Cat(const Cat& other);
-        void makeSound() const;
+private:
+    /* data */
+public:
+    Ice();
+    Ice(const Ice& other);
+    Ice& operator=(const Ice& other);
+    ~Ice();
+    AMateria* clone() const; 
+    void use(ICharacter& target);
 };
-
 
 
 #endif

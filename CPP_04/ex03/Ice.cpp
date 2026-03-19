@@ -1,46 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/14 16:46:39 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/16 07:50:36 by ighannam         ###   ########.fr       */
+/*   Created: 2026/03/18 11:02:58 by ighannam          #+#    #+#             */
+/*   Updated: 2026/03/19 15:25:59 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Ice.hpp"
+#include "ICharacter.hpp"
 
-Cat::Cat()
-    : Animal("Cat")
+Ice::Ice()
+    : AMateria("ice")
 {
-    cout << "Default Cat constructor called.\n";
+    
 }
 
-Cat::~Cat()
+Ice::Ice(const Ice& other)
+    : AMateria(other)
 {
-    cout << "Cat destructor called.\n";
+    
 }
 
-Cat& Cat::operator=(const Cat& other)
+Ice& Ice::operator=(const Ice& other)
 {
-    cout << "Cat operator '=' called.\n";
     if (this != &other)
     {
-        this->type = other.type;
+        AMateria::operator=(other);
     }
-    return (*this);
+    return (*this);    
 }
 
-Cat::Cat(const Cat& other)
-    : Animal("Cat")
+Ice::~Ice()
 {
-    cout << "Cat copy constructor called.\n";
-    *this = other;
+
 }
 
-void Cat::makeSound() const
+AMateria* Ice::clone() const
 {
-    cout << "MEAW MEAW MEAW\n";
+    return (new Ice(*this));
+}
+
+void Ice::use(ICharacter& target)
+{
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
 }

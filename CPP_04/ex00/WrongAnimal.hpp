@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/12 16:38:53 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/16 07:50:27 by ighannam         ###   ########.fr       */
+/*   Created: 2026/03/12 16:24:14 by ighannam          #+#    #+#             */
+/*   Updated: 2026/03/16 07:59:10 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
-#include "Animal.hpp"
+#include <iostream>
+using std::cout;
 
-class Cat : public Animal
+class WrongAnimal
 {
+    protected:
+        std::string type;
     public:
-        Cat();
-        ~Cat();
-        Cat& operator=(const Cat& other);
-        Cat(const Cat& other);
+        WrongAnimal();
+        WrongAnimal(std::string type);
+        ~WrongAnimal();
+        WrongAnimal& operator=(const WrongAnimal& other);
+        WrongAnimal(const WrongAnimal& other);
         void makeSound() const;
+        std::string getType() const;
 };
 
 

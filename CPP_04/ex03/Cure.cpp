@@ -1,46 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/14 16:46:39 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/16 07:50:36 by ighannam         ###   ########.fr       */
+/*   Created: 2026/03/18 11:12:42 by ighannam          #+#    #+#             */
+/*   Updated: 2026/03/19 15:26:58 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Cure.hpp"
+#include "ICharacter.hpp"
 
-Cat::Cat()
-    : Animal("Cat")
+Cure::Cure()
+    : AMateria("cure")
 {
-    cout << "Default Cat constructor called.\n";
+    
 }
 
-Cat::~Cat()
+Cure::Cure(const Cure& other)
+    : AMateria(other)
 {
-    cout << "Cat destructor called.\n";
+    
 }
 
-Cat& Cat::operator=(const Cat& other)
+Cure& Cure::operator=(const Cure& other)
 {
-    cout << "Cat operator '=' called.\n";
     if (this != &other)
     {
-        this->type = other.type;
+        this->AMateria::operator=(other);
     }
-    return (*this);
+    return (*this);    
 }
 
-Cat::Cat(const Cat& other)
-    : Animal("Cat")
+Cure::~Cure()
 {
-    cout << "Cat copy constructor called.\n";
-    *this = other;
+    
 }
 
-void Cat::makeSound() const
+AMateria* Cure::clone() const
 {
-    cout << "MEAW MEAW MEAW\n";
+    return (new Cure(*this));
+}
+
+void Cure::use(ICharacter& target)
+{
+    std::cout << "* heals " << target.getName() << "'s wounds *\n";
 }

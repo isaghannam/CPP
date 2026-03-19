@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 16:44:40 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/16 07:50:21 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/03/16 07:58:55 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-Animal::Animal()
-    : type("Generic animal")
+WrongAnimal::WrongAnimal()
+    : type("Generic WrongAnimal")
 {
-    cout << "Default animal constructor called.\n";
+    cout << "Default WrongAnimal constructor called.\n";
 }
 
-Animal::Animal(std::string type)
+WrongAnimal::WrongAnimal(std::string type)
     : type(type)
 {
-    cout << "Animal constructor with type " << type << " called.\n";
+    cout << "WrongAnimal constructor with type " << type << " called.\n";
 }
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-    cout << "Animal destructor called.\n";
+    cout << "WrongAnimal destructor called.\n";
 }
 
-Animal& Animal::operator=(const Animal& other)
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
 {
-    cout << "Animal operator '=' called.\n";
+    cout << "WrongAnimal operator '=' called.\n";
     if (this != &other)
     {
         this->type = other.type;
@@ -39,18 +39,18 @@ Animal& Animal::operator=(const Animal& other)
     return (*this);
 }
 
-Animal::Animal(const Animal& other)
+WrongAnimal::WrongAnimal(const WrongAnimal& other)
 {
-    cout << "Animal copy constructor called.\n";
+    cout << "WrongAnimal copy constructor called.\n";
     *this = other;
 }
 
-void Animal::makeSound() const
+void WrongAnimal::makeSound() const
 {
-    cout << "GENERIC ANIMAL SOUND\n";
+    cout << "GENERIC WRONG ANIMAL SOUND\n";
 }
 
-std::string Animal::getType() const
+std::string WrongAnimal::getType() const
 {
     return (type);
 }

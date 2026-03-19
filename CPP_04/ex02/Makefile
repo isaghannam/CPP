@@ -1,9 +1,9 @@
-NAME = animal_sound
+NAME = abstract_animal
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

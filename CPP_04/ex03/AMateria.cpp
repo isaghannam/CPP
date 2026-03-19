@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/14 16:46:39 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/16 07:50:36 by ighannam         ###   ########.fr       */
+/*   Created: 2026/03/18 10:45:02 by ighannam          #+#    #+#             */
+/*   Updated: 2026/03/19 15:22:01 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-Cat::Cat()
-    : Animal("Cat")
+AMateria::AMateria()
+    : type("Default type")
 {
-    cout << "Default Cat constructor called.\n";
+    
 }
 
-Cat::~Cat()
+AMateria::AMateria(std::string const & type)
+    : type(type)
 {
-    cout << "Cat destructor called.\n";
+    
 }
 
-Cat& Cat::operator=(const Cat& other)
+AMateria::AMateria(const AMateria& other)
 {
-    cout << "Cat operator '=' called.\n";
+    *this = other;
+}
+
+AMateria& AMateria::operator=(const AMateria& other)
+{
     if (this != &other)
     {
         this->type = other.type;
@@ -33,14 +39,17 @@ Cat& Cat::operator=(const Cat& other)
     return (*this);
 }
 
-Cat::Cat(const Cat& other)
-    : Animal("Cat")
+AMateria::~AMateria()
 {
-    cout << "Cat copy constructor called.\n";
-    *this = other;
+
 }
 
-void Cat::makeSound() const
+std::string const & AMateria::getType() const
 {
-    cout << "MEAW MEAW MEAW\n";
+    return (type);
+}
+
+void AMateria::use(ICharacter& target)
+{
+    std::cout << "* does nothing to " << target.getName() << " *\n";
 }

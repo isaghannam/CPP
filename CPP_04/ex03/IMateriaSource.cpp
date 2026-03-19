@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   IMateriaSource.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/12 16:38:53 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/16 07:50:27 by ighannam         ###   ########.fr       */
+/*   Created: 2026/03/18 15:42:54 by ighannam          #+#    #+#             */
+/*   Updated: 2026/03/19 15:39:19 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#include "IMateriaSource.hpp"
 
-#include "Animal.hpp"
-
-class Cat : public Animal
+IMateriaSource::IMateriaSource()
 {
-    public:
-        Cat();
-        ~Cat();
-        Cat& operator=(const Cat& other);
-        Cat(const Cat& other);
-        void makeSound() const;
-};
+    
+}
 
+IMateriaSource::IMateriaSource(const IMateriaSource& other)
+{
+    (void)other;
+}
 
-
-#endif
+IMateriaSource& IMateriaSource::operator=(const IMateriaSource& other)
+{
+    (void)other;
+    return (*this);
+}
