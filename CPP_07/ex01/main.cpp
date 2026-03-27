@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 14:32:41 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/26 15:09:08 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/03/27 16:41:23 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main()
     {
         std::cout << "INT ARRAY TEST\n";
         int int_array[5] = {1,2,3,4,5};
-        iter<int>(int_array, 5, print_plus_one<int>);
+        iter(int_array, 5, print_plus_one<int>);
     }
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 14:32:44 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/26 17:54:44 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/03/27 16:43:13 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ITER_HPP
 
 #include <iostream>
+#include <typeinfo>
 
 template<typename T, typename F>
 void iter(T * array, const size_t size, F function)
