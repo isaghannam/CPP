@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:54:35 by ighannam          #+#    #+#             */
-/*   Updated: 2026/03/31 15:33:41 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/04/01 19:12:20 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,49 @@
 #include <map>
 #include <iostream>
 #include <fstream>
+#include <ctime>
+#include <cstring>
 
 class BitcoinExchange
 {
 private:
-    std::map<std::string, float> data;
+    std::map<std::string, double> data;
 public:
-    BitcoinExchange(std::map<std::string, float> data);
+    BitcoinExchange(std::map<std::string, double> data);
+    BitcoinExchange(std::string data);
     BitcoinExchange(const BitcoinExchange & other);
     BitcoinExchange & operator=(const BitcoinExchange & other);
     ~BitcoinExchange();
-    float findExchangeRate(std::string date);
-    float calculatePosition(std::string date, int value);
+    class ErrorDublicatedDataInDatabaseException : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    class ErrorOpeningFileException : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    class ErrorInHeaderException : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    class ErrorInExchangeValueException : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    class ErrorBadDateException : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    void calculatePosition(std::string date, std::string qty);
+    void processInput(std::string input_file);
 };
 
 
+bool isValidDate(std::string date);
 
 #endif
