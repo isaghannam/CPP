@@ -6,21 +6,15 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:54:31 by ighannam          #+#    #+#             */
-/*   Updated: 2026/04/01 19:29:56 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/04/02 14:36:39 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(std::map<std::string, double> data)
-    : data(data)
-{
-    
-}
-
 BitcoinExchange::BitcoinExchange(std::string data)
 {
-    std::ifstream database("data.csv");
+    std::ifstream database(data.c_str());
     if (!database.is_open())
         throw ErrorOpeningFileException();
     std::string date;
@@ -49,12 +43,14 @@ BitcoinExchange::BitcoinExchange(std::string data)
             throw ErrorInExchangeValueException();
         }
         pair_data.second = value;
-        if ((*map_data.insert(map_data.end(), pair_data)).second == false)
+        if ((map_data.insert(pair_data)).second == false)
         {
-            std::cerr << "Duplicatede key in database: " << pair_data.first << " ";
+            std::cerr << pair_data.first << " ";
             throw ErrorDublicatedDataInDatabaseException();
         }       
     }
+    if (map_data.empty())
+        throw ErrorEmptyDataException();
     this->data = map_data;
 }
 
@@ -103,6 +99,26 @@ const char *BitcoinExchange::ErrorBadDateException::what() const throw()
     return ("Date is not valid");
 }
 
+const char *BitcoinExchange::ErrorBadValueException::what() const throw()
+{
+    return ("Error: not a valid input number");
+}
+
+const char *BitcoinExchange::ErrorNegativeValueException::what() const throw()
+{
+    return ("Error: not a positive number.");
+}
+
+const char *BitcoinExchange::ErrorTooLargeValueException::what() const throw()
+{
+    return ("Error: too large a number.");
+}
+
+const char *BitcoinExchange::ErrorEmptyDataException::what() const throw()
+{
+    return ("Error: no exchange data");
+}
+
 bool isValidDate(std::string date)
 {
     char *end;
@@ -145,7 +161,7 @@ bool isValidDate(std::string date)
 
 void BitcoinExchange::processInput(std::string input_file)
 {
-    std::ifstream input(input_file);
+    std::ifstream input(input_file.c_str());
     if (!input.is_open())
         throw ErrorOpeningFileException();
     std::string line;
@@ -155,13 +171,13 @@ void BitcoinExchange::processInput(std::string input_file)
     if (input_date != "date ")
         throw ErrorInHeaderException();
     std::getline(input, qty);
-    if (qty != "value")
+    if (qty != " value")
         throw ErrorInHeaderException();
     while (std::getline(input, line))
     {
         if (line.length() < 14 || line[10] != ' ' || line[11] != '|' || line[12] != ' ')
         {
-            std::cout << "Error in line: " << line << std::endl;
+            std::cout << "Error: bad input => " << line << std::endl;
             continue;
         }
         input_date = line.substr(0, 10);
@@ -170,43 +186,46 @@ void BitcoinExchange::processInput(std::string input_file)
         {
             calculatePosition(input_date, qty);
         }
-        catch(const std::exception& e)
+        catch(const BitcoinExchange::ErrorBadDateException& e)
         {
             std::cerr << e.what() << '\n';
         }
-        catch(const std::exception& e)
+        catch(const BitcoinExchange::ErrorBadValueException& e)
         {
             std::cerr << e.what() << '\n';
         }
-        
-        
+        catch(const BitcoinExchange::ErrorNegativeValueException& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+        catch(const BitcoinExchange::ErrorTooLargeValueException& e)
+        {
+            std::cerr << e.what() << '\n';
+        }        
     }
 }
 
 void BitcoinExchange::calculatePosition(std::string date, std::string qty)
 {
     std::map<std::string, double>::iterator price;
-    int value;
+    double value;
     char *end;
     if (!isValidDate(date))
-    {
         throw ErrorBadDateException();
-    }
-    
-    value = static_cast<int>(std::strtod(qty.c_str(), &end));
+    value = std::strtod(qty.c_str(), &end);
     if (!(end[0] == '\0'))
-    {
-        std::cerr << "Error: bad value input => " << qty << std::endl;
-        continue;
-    }
-    //if value is wrong print error & continue
-    price = (map_data.lower_bound(input_date));
-    if (price == map_data.end() || (*price).first != input_date)
-        --price;
-    else if (price == map_data.begin())
+        throw ErrorBadValueException();
+    if (value > 1000)
+        throw ErrorTooLargeValueException();
+    if (value < 0)
+        throw ErrorNegativeValueException();
+    price = (data.lower_bound(date));
+    if (price == data.begin() && (*price).first != date)
     {
         std::cerr << "Error: no data available for this date or before it.\n";
-        continue;
+        return;
     }
-    std::cout << input_date << " => " << value << " = " << (*price).second * value;
+    else if (price == data.end() || (*price).first != date)
+        --price;
+    std::cout << date << " => " << value << " = " << (*price).second * value << std::endl;
 }

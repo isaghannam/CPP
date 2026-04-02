@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:54:35 by ighannam          #+#    #+#             */
-/*   Updated: 2026/04/01 19:12:20 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/04/02 14:22:29 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 #include <fstream>
 #include <ctime>
 #include <cstring>
+#include <string>
 
 class BitcoinExchange
 {
 private:
     std::map<std::string, double> data;
 public:
-    BitcoinExchange(std::map<std::string, double> data);
     BitcoinExchange(std::string data);
     BitcoinExchange(const BitcoinExchange & other);
     BitcoinExchange & operator=(const BitcoinExchange & other);
@@ -51,6 +51,26 @@ public:
             const char *what() const throw();
     };
     class ErrorBadDateException : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    class ErrorBadValueException : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    class ErrorNegativeValueException : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    class ErrorTooLargeValueException : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    class ErrorEmptyDataException : public std::exception
     {
         public:
             const char *what() const throw();
