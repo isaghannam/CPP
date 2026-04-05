@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 14:46:06 by ighannam          #+#    #+#             */
-/*   Updated: 2026/04/02 18:43:54 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/04/05 12:28:51 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,25 @@
 
 #include <stack>
 #include <string>
+#include <iostream>
+#include <cmath>
 
 class RPN
 {
     private:
         std::string input;
-        std::stack<int> numbers;
     public:
         RPN(std::string input);
         RPN(const RPN & other);
         RPN & operator=(const RPN & other);
         ~RPN();
-        class ErrorInvalidCharacters : std::exception
+        class ErrorInvalidExpressionException : public std::exception
         {
             public:
              const char *what() const throw();
         };
-        class ErrorInvalidExpression : std::exception
-        {
-            public:
-             const char *what() const throw();
-        };
-        void processNextToken();
+        double processInput();
+        void processOperation(std::stack<double> & numbers, char operation);
 };
 
 
