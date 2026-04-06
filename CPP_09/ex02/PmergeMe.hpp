@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:17:01 by ighannam          #+#    #+#             */
-/*   Updated: 2026/04/05 18:07:17 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/04/06 18:06:22 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <ctime>
 
 class PmergeMe
 {
@@ -26,8 +27,10 @@ private:
     std::vector<int> input;
     std::vector<int> result_vec;
     std::deque<int> result_deq;
+    void PmergeMeSortVec(int level);
+    void PmergeMeSortDeq(int level);
 public:
-    PmergeMe(std::vector<std::string> input);
+    PmergeMe(int argc, char **argv);
     PmergeMe(const PmergeMe & other);
     PmergeMe& operator=(const PmergeMe & other);
     ~PmergeMe();
@@ -35,8 +38,8 @@ public:
     {
         const char *what() throw();
     };
-    void PmergeMeSortVec();
-    
+    double PmergeMeSortVec();
+    double PmergeMeSortDeq();
 };
 
 #endif
