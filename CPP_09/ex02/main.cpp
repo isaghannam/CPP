@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:17:08 by ighannam          #+#    #+#             */
-/*   Updated: 2026/04/08 18:40:21 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/04/09 11:52:45 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int	main(int argc, char **argv)
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
-    }	
+    }
 	return (0);
 }

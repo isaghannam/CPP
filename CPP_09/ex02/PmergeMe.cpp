@@ -6,7 +6,7 @@
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:17:05 by ighannam          #+#    #+#             */
-/*   Updated: 2026/04/08 18:34:53 by ighannam         ###   ########.fr       */
+/*   Updated: 2026/04/09 12:14:02 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ void PmergeMe::PmergeMeSortDeq(int level)
 		for (int j = j_number - 1; j >= jacobsthal_numbers[i - 1]; j--)
 		{
 			a = result_deq[(j + 1) * 2 * chunk_size - 1];
+            
 			local_to_insert = binarySearch(main, pend[(j + 1) * chunk_size - 1],
 					findElementPos(main, a, chunk_size) + 1, chunk_size);
 			main.insert(main.begin() + local_to_insert * chunk_size,
